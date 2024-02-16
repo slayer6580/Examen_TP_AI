@@ -6,28 +6,29 @@ public class EnemyStateMachine : MonoBehaviour
 {
     [SerializeField] private Transform m_player;
     [SerializeField] private float m_detectionDistance;
-    List<CharacterState> m_possibleStates;
-    CharacterState m_currentState;
+    List<EnemyState> m_possibleStates;
+	EnemyState m_currentState;
     private NavMeshAgent m_agent;
+	public Transform[] patrolPoints;
 
 
-    private void Awake()
+	private void Awake()
     {
         m_agent = GetComponent<NavMeshAgent>();
     }
 
     private void CreatePossibleStates()
     {
-        m_possibleStates = new List<CharacterState>();
-        m_possibleStates.Add(new IdleState());
-        m_possibleStates.Add(new PursuitState());
+        m_possibleStates = new List<EnemyState>();
+        m_possibleStates.Add(new StateIdle());
+        m_possibleStates.Add(new StatePatrol());
     }
 
     void Start()
     {
         CreatePossibleStates();
 
-        foreach (CharacterState state in m_possibleStates)
+        foreach (EnemyState state in m_possibleStates)
         {
             state.OnStart(this);
         }
@@ -76,7 +77,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    public CharacterState GetCurrentState()
+    public EnemyState GetCurrentState()
     {
         return m_currentState;
     }

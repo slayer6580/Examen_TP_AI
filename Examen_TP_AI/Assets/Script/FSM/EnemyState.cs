@@ -1,4 +1,4 @@
-public abstract class CharacterState : IState
+public abstract class EnemyState : IState
 {
     protected EnemyStateMachine m_stateMachine;
 
@@ -34,7 +34,7 @@ public abstract class CharacterState : IState
         throw new System.NotImplementedException();
     }
 
-    public void OnStart()
+    public virtual void OnStart()
     {
         throw new System.NotImplementedException();
     }

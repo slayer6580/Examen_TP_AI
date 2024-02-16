@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class IdleState : CharacterState
+public class IdleState : EnemyState
 {
     public override void OnEnter()
     {
@@ -27,13 +27,13 @@ public class IdleState : CharacterState
     public override bool CanEnter(IState currentState)
     {
 	
-        return !m_stateMachine.PlayerIsInSight();
+        return true;
 
     }
 
     public override bool CanExit()
     {
-        return m_stateMachine.PlayerIsInSight();
+        return true;
     }
 
 }
