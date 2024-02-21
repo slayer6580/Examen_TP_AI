@@ -242,7 +242,7 @@ Transform:
   m_GameObject: {fileID: 887157331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.38, y: 4, z: -4.01}
+  m_LocalPosition: {x: 0.53, y: 4, z: -3.375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 1082058765}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.021978322, y: 4, z: -4.01}
+  m_LocalPosition: {x: 3.5, y: 4, z: -6.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 1304841137}
   - component: {fileID: 1304841140}
   - component: {fileID: 1304841136}
+  - component: {fileID: 1304841141}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -493,10 +494,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isTakingABreak: 0
   m_player: {fileID: 1553445465}
-  m_detectionDistance: 5
+  m_detectionDistance: 10
   patrolPoints:
   - {fileID: 1082058766}
   - {fileID: 887157332}
+--- !u!195 &1304841141
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304841135}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.49999997
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.9999999
+  m_BaseOffset: 0.99999994
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1553445461
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +532,8 @@ GameObject:
   - component: {fileID: 1553445464}
   - component: {fileID: 1553445463}
   - component: {fileID: 1553445462}
+  - component: {fileID: 1553445467}
+  - component: {fileID: 1553445466}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -597,11 +622,45 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2, y: 3.46, z: 6.63}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.52684116, y: 0.52684116, z: 0.52684116}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1553445466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553445461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5753f9ddd0336424384ef31a2df4c8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &1553445467
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553445461}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &8483669062130263562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -650,10 +709,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3314917796485783690, guid: 31ae3a93733548b43a904391ecb56d46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4553366262748307197, guid: 31ae3a93733548b43a904391ecb56d46, type: 3}
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 5550194326227160377, guid: 31ae3a93733548b43a904391ecb56d46, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: f426e09df758c8141ba465c89d650b21, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

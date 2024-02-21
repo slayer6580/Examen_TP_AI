@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class StatePatrol : EnemyState
     private float patrolSpeed = 3f;
     private int currentPatrolIndex = 0;
     private Vector3 nextPatrolPoint;
-
+    private float m_reachDistance = 1;
 
     public override bool CanEnter(IState currentState)
     {
@@ -22,6 +23,7 @@ public class StatePatrol : EnemyState
 
     public override void OnEnter()
     {
+        m_stateMachine.GetAgent().isStopped = false;
         SetNextPatrolPoint();
     }
 
@@ -37,10 +39,10 @@ public class StatePatrol : EnemyState
 
     public override void OnUpdate()
     {
-
-		if (m_stateMachine.gameObject.transform.position == nextPatrolPoint)
+		if (Vector3.Distance(m_stateMachine.gameObject.transform.position, m_stateMachine.patrolPoints[currentPatrolIndex].position) < m_reachDistance)
 		{
-			int rngState = Random.Range(0, 4);
+			
+			int rngState = Random.Range(0, 3);
 
 			if (rngState == 0)
 			{

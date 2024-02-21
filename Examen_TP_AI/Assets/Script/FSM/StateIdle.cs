@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateIdle : EnemyState
 {
-    private float m_breakTime = 3;
+    private float m_breakTime = 2;
     private float m_breakTimer = 0;
     //m_stateMachine
 
