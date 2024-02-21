@@ -10,20 +10,22 @@ public class StateIdle : EnemyState
 
     public override void OnEnter()
     {
-        
-    }
+		m_stateMachine.m_isTakingABreak = false;
+		m_breakTimer = m_breakTime;
+	}
     public override bool CanEnter(IState currentState)
     {
-        return true;
-    }
+		return m_stateMachine.m_isTakingABreak;
+	}
 
     public override void OnUpdate()
     {
-      
-    }
+		m_breakTimer -= Time.deltaTime;
+		Debug.Log("Is taking a break");
+	}
 
     public override bool CanExit()
     {
-        return true;
-    }
+		return m_breakTimer <= 0;
+	}
 }

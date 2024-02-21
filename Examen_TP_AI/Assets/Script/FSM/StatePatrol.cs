@@ -12,14 +12,13 @@ public class StatePatrol : EnemyState
 
     public override bool CanEnter(IState currentState)
     {
-        return true;
-
-    }
+		return !m_stateMachine.m_isTakingABreak;
+	}
 
     public override bool CanExit()
     {
-        return false;
-    }
+		return true;
+	}
 
     public override void OnEnter()
     {
@@ -42,8 +41,19 @@ public class StatePatrol : EnemyState
 		m_stateMachine.gameObject.transform.position = Vector3.MoveTowards(m_stateMachine.gameObject.transform.position, nextPatrolPoint, patrolSpeed * Time.deltaTime);
 
 		if (m_stateMachine.gameObject.transform.position == nextPatrolPoint)
-		{	
-		    SetNextPatrolPoint();		
+		{
+			int rngState = Random.Range(0, 4);
+
+			if (rngState == 0)
+			{
+
+				m_stateMachine.m_isTakingABreak = true;
+			}
+			else
+			{
+				SetNextPatrolPoint();
+			}
+
 		}
 
 	}

@@ -4,7 +4,8 @@ using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    [SerializeField] private Transform m_player;
+	public bool m_isTakingABreak;
+	[SerializeField] private Transform m_player;
     [SerializeField] private float m_detectionDistance;
     List<EnemyState> m_possibleStates;
 	EnemyState m_currentState;
@@ -22,7 +23,8 @@ public class EnemyStateMachine : MonoBehaviour
         m_possibleStates = new List<EnemyState>();
         m_possibleStates.Add(new StateIdle());
         m_possibleStates.Add(new StatePatrol());
-    }
+		m_possibleStates.Add(new StatePursuit());
+	}
 
     void Start()
     {
