@@ -38,8 +38,6 @@ public class StatePatrol : EnemyState
     public override void OnUpdate()
     {
 
-		m_stateMachine.gameObject.transform.position = Vector3.MoveTowards(m_stateMachine.gameObject.transform.position, nextPatrolPoint, patrolSpeed * Time.deltaTime);
-
 		if (m_stateMachine.gameObject.transform.position == nextPatrolPoint)
 		{
 			int rngState = Random.Range(0, 4);
@@ -60,7 +58,12 @@ public class StatePatrol : EnemyState
 
     void SetNextPatrolPoint()
     {
-        currentPatrolIndex = (currentPatrolIndex + 1) % m_stateMachine.patrolPoints.Length;
-        nextPatrolPoint = m_stateMachine.patrolPoints[currentPatrolIndex].position;
+        currentPatrolIndex++;
+		if(currentPatrolIndex == m_stateMachine.patrolPoints.Length)
+        {
+            currentPatrolIndex = 0;
+		}
+		
+		m_stateMachine.GetAgent().SetDestination(m_stateMachine.patrolPoints[currentPatrolIndex].position);
     }
 }
